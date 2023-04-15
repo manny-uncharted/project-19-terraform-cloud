@@ -386,3 +386,43 @@ Ami for sonarqube
 ![Packer ami for sonarqube](img/packer-ami-ubuntu.png)
 Ami for tooling and wordpress
 ![Packer ami for tooling and wordpress](img/packer-ami-web.png)
+
+
+## Run Terraform script
+- Now you can run the Terraform script to create the launch template and the autoscaling group on Terraform cloud.
+
+result:
+
+![Terraform cloud](img/terraform-cloud-apply.png)
+
+
+## Configure ansible script with Terraform output
+Now let's create our ansible script to configure sonarqube, webserver and tooling on our ec2 instances.
+
+- We have to create an Ansible script to update our instances to do the following:
+  - Connect our rds to the webservers.
+  - Install and configure Sonarqube.
+  - Install and configure WordPress.
+  - Install and configure Jenkins.
+  - Configure our Nginx server to proxy_pass to our Webserver and tooling.
+
+- Here's a link to the ansible script [Ansible script](https://github.com/manny-uncharted/terraform-cloud-codes/tree/main/Ansible)
+
+- We need to update the following:
+  - In the tooling and WordPress playbook we need to update the login_host for the setup_db.yml file to the rds endpoint.
+
+    result:
+
+    ![Ansible playbook](img/ansible-playbook-rds.png)
+
+  - Also remember to update the password and username for the rds in the setup_db.yml file for the tooling and WordPress playbooks.
+
+    result:
+
+    ![Ansible playbook](img/ansible-playbook-rds.png)
+
+  - For the Nginx playbook we need to update the proxy_pass to the webserver and tooling.
+
+    result:
+
+    ![Ansible playbook](img/ansible-playbook-nginx.png)
