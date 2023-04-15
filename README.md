@@ -56,6 +56,7 @@ Now run plan and apply on the terraform cloud dashboard:
 result:
 ![Terraform apply](img/terraform-apply.png)
 
+- After running the terraform apply, you would notice that we were unable to build our autoscaling groups due to the fact that we don't have any images to launch our instances from. We would need to build our images using Packer and then launch our instances from the images.
 
 ## Building images using Packer
 Packer is a tool for creating identical machine images for multiple platforms from a single source configuration. Packer is lightweight, runs on every major operating system, and is highly performant, creating machine images for multiple platforms in parallel. [Here is a guide on how to use Packer](https://developer.hashicorp.com/packer/tutorials/docker-get-started/docker-get-started-provision)
@@ -374,3 +375,14 @@ packer build nginx.pkr.hcl
 packer build ubuntu.pkr.hcl
 packer build web.pkr.hcl
 ```
+
+result:
+
+Ami for bastion
+![Packer ami for bastion](img/packer-ami-bastion.png)
+Ami for nginx
+![Packer ami for nginx](img/packer-ami-nginx.png)
+Ami for sonarqube
+![Packer ami for sonarqube](img/packer-ami-ubuntu.png)
+Ami for tooling and wordpress
+![Packer ami for tooling and wordpress](img/packer-ami-web.png)
