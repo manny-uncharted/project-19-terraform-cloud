@@ -426,3 +426,40 @@ Now let's create our ansible script to configure sonarqube, webserver and toolin
     result:
 
     ![Ansible playbook](img/ansible-playbook-nginx.png)
+
+
+## Run ansible script
+- Let's ssh into our bastion host and run the Ansible script.
+  ```bash
+  ansible-inventory -i inventory/aws_ec2.yml --graph
+  ```
+
+  result:
+
+  ![Ansible inventory](img/ansible-inventory.png)
+
+  Note: Ensure you have configured your AWS credentials in your Bastion host.
+
+- Now let's export the ansible config file.
+  ```bash
+  export ANSIBLE_CONFIG=/home/ec2-user/<folder>/Ansible/ansible.cfg
+  ```
+
+  result:
+
+  ![Ansible config](img/ansible-config.png)
+
+
+Note: remember to add your private key to ssh openserver
+```bash
+ssh-add <private key>
+```
+
+- Now let's run the ansible script.
+  ```bash
+  ansible-playbook -i inventory/aws_ec2.yml playbooks/site.yml
+  ```
+
+  result:
+
+  ![Ansible playbook](img/ansible-playbook.png)
