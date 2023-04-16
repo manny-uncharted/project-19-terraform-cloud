@@ -463,3 +463,17 @@ ssh-add <private key>
   result:
 
   ![Ansible playbook](img/ansible-playbook.png)
+
+Note: Upon deploying the instance for your wordpress site, you will need to update the database name, username and password in the wp-config.php file.
+```bash
+sudo nano /var/www/html/wp-config.php
+```
+
+- Let's navigate to our wordpress site and login to the admin page.
+  ```bash
+    wordpress.<your-domain>.<whatever>
+  ```
+
+  result:
+
+  ![Wordpress login](img/wordpress-login.png)
